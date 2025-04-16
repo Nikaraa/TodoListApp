@@ -1,31 +1,13 @@
-server:
-  port: 8080
-
 spring:
   datasource:
-    url: jdbc:h2:mem:todolistdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: sa
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+    url: jdbc:mysql://localhost:3306/todo-app
+    username: root
+    password: password
   jpa:
     hibernate:
-      ddl-auto: update  # crea le tabelle in automatico
-    show-sql: true      # stampa le query nel terminale
+      ddl-auto: update #update the schema automatically to match the entity model
     properties:
       hibernate:
-        format_sql: true
-  thymeleaf:
-    cache: false
-    prefix: classpath:/templates/
-    suffix: .html
-
-# logging utile durante lo sviluppo
-logging:
-  level:
-    org.springframework.security: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql: TRACE
+        dialect:
+          org.hibernate.dialect.MySQLDialect
+        #It will generate a Queries specific to the MySQL
