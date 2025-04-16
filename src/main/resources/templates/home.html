@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - ToDo App</title>
+</head>
+<body>
+<h1>Benvenuto nella tua TodoList App!</h1>
+
+<!-- Mostra il nome dell’utente loggato -->
+<p>Ciao, <strong th:text="${#httpServletRequest.remoteUser}">utente</strong>!</p>
+
+<ul>
+    <li th:each="todo : ${todos}" th:text="${todo.title}"></li>
+</ul>
+
+
+<!-- Link al logout -->
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<hr>
+
+<!-- Link per andare alla lista dei ToDo -->
+<a th:href="@{/todos}">Vai ai tuoi ToDo</a>
+</body>
+</html>
